@@ -1,36 +1,254 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Client Project Tracker
 
-## Getting Started
+A responsive frontend application for managing client projects in a digital agency environment.
 
-First, run the development server:
+The application allows users to create, view, edit, and delete projects while providing search, filtering, sorting, validation, dashboard statistics, and responsive layouts.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project was developed as part of a Frontend Developer Technical Assessment.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The Client Project Tracker provides a centralized interface for managing client projects.
 
-## Learn More
+Users can:
 
-To learn more about Next.js, take a look at the following resources:
+- View all projects
+- Create new projects
+- Edit existing projects
+- Delete projects
+- Search projects
+- Filter projects by status
+- Filter projects by priority
+- Sort projects
+- View project statistics
+- Validate project information
+- Receive success and error feedback through toast notifications
+- Use the application on desktop and mobile devices
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+No backend implementation is required for this assessment. Project data is initially loaded from the provided `test_data.json` file and managed in client-side state during the session.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Required Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### Project List
+
+Displays project information including:
+
+- Client Name
+- Project Name
+- Status
+- Priority
+- Due Date
+
+Projects are presented in a responsive table/list layout.
+
+#### Create Project
+
+Users can create a new project through a modal form.
+
+After successfully creating a project:
+
+- The project is immediately added to the project list
+- The project appears at the top when using the default "Recently Added" sorting
+- A success toast notification is displayed
+- The dialog closes automatically
+
+#### Edit Project
+
+Users can edit existing projects.
+
+After updating a project:
+
+- The project list updates immediately
+- A success toast notification confirms the update
+
+#### Delete Project
+
+Users can delete projects through a confirmation dialog.
+
+After deletion:
+
+- The project is removed immediately from the list
+- Dashboard statistics are updated
+- A success toast notification is displayed
+
+#### Form Validation
+
+The project form validates:
+
+- Client Name is required
+- Project Name is required
+- Status is required
+- Status must be a valid project status
+- Priority is required
+- Priority must be a valid project priority
+- Due Date cannot be earlier than Start Date
+
+Validation errors are displayed directly within the form.
+
+#### UI States
+
+The application handles:
+
+- Loading state
+- Empty state
+- No search/filter results state
+- Error state
+- Success notifications
+- Delete confirmation
+
+---
+
+## Bonus Features
+
+The following optional features were also implemented:
+
+### Search
+
+Projects can be searched by:
+
+- Project Name
+- Client Name
+- Description
+
+### Status Filtering
+
+Projects can be filtered by:
+
+- All
+- Pending
+- In Progress
+- Completed
+- On Hold
+
+### Priority Filtering
+
+Projects can be filtered by:
+
+- All
+- Low
+- Medium
+- High
+- Urgent
+
+### Sorting
+
+Projects can be sorted by:
+
+- Recently Added
+- Due Date — Earliest
+- Due Date — Latest
+- Project Name — A-Z
+- Project Name — Z-A
+
+The default sorting is **Recently Added**, so newly created projects appear at the top of the list.
+
+### Dashboard Summary
+
+The dashboard displays project counts for:
+
+- Total Projects
+- Pending
+- In Progress
+- Completed
+
+### Responsive Design
+
+The interface is designed to work across:
+
+- Desktop
+- Tablet
+- Mobile
+
+### Toast Notifications
+
+Success and error feedback is provided through the Shadcn toast system.
+
+Examples include:
+
+- Project created successfully
+- Project updated successfully
+- Project deleted successfully
+- Unable to save project
+- Unable to delete project
+
+---
+
+## Tech Stack
+
+### Core
+
+- [Next.js](https://nextjs.org/)
+- React
+- TypeScript
+
+### UI
+
+- [shadcn/ui](https://ui.shadcn.com/)
+- Tailwind CSS
+- Lucide React
+
+### Forms & Validation
+
+- React Hook Form
+- Zod
+
+### Data
+
+- Local JSON data source
+- React state management
+
+---
+
+## Project Structure
+
+```text
+task-management/
+│
+├── app/
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+│
+├── components/
+│   ├── tasks/
+│   │   ├── delete-task-dialog.tsx
+│   │   ├── task-card.tsx
+│   │   ├── task-filters.tsx
+│   │   ├── task-form.tsx
+│   │   ├── task-list.tsx
+│   │   └── task-manager.tsx
+│   │
+│   └── ui/
+│       ├── badge.tsx
+│       ├── button.tsx
+│       ├── card.tsx
+│       ├── dialog.tsx
+│       ├── input.tsx
+│       ├── select.tsx
+│       ├── skeleton.tsx
+│       ├── toast.tsx
+│       └── ...
+│
+├── data/
+│   └── test_data.json
+│
+├── lib/
+│   ├── task-utils.ts
+│   ├── utils.ts
+│   └── validation.ts
+│
+├── types/
+│   └── task.ts
+│
+├── public/
+│
+├── components.json
+├── package.json
+├── tsconfig.json
+└── README.md
