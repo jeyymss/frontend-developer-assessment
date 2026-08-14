@@ -1,20 +1,18 @@
 # Client Project Tracker
 
-A responsive frontend application for managing client projects in a digital agency environment.
+A responsive frontend application for managing client projects for a digital agency.
 
-The application allows users to create, view, edit, and delete projects while providing search, filtering, sorting, validation, dashboard statistics, and responsive layouts.
-
-This project was developed as part of a Frontend Developer Technical Assessment.
+This project was developed as part of a **Frontend Developer Technical Assessment**. The application allows users to create, view, update, and delete client projects while providing search, filtering, sorting, validation, dashboard statistics, and responsive layouts.
 
 ---
 
 ## Overview
 
-The Client Project Tracker provides a centralized interface for managing client projects.
+The Client Project Tracker provides a simple interface for an agency to manage projects across different clients.
 
 Users can:
 
-- View all projects
+- View all client projects
 - Create new projects
 - Edit existing projects
 - Delete projects
@@ -23,21 +21,57 @@ Users can:
 - Filter projects by priority
 - Sort projects
 - View project statistics
-- Validate project information
-- Receive success and error feedback through toast notifications
+- Receive success and error notifications
 - Use the application on desktop and mobile devices
 
-No backend implementation is required for this assessment. Project data is initially loaded from the provided `test_data.json` file and managed in client-side state during the session.
+No backend implementation is required for this assessment. Project data is initialized from the provided `test_data.json` file and managed in frontend state.
 
 ---
 
-## Features
+## Tech Stack
 
-### Required Features
+- **Next.js**
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **shadcn/ui**
+- **Lucide React**
+- **React Hook Form**
+- **Zod**
+- **Base UI**
+- **ESLint**
 
-#### Project List
+### Why these technologies?
 
-Displays project information including:
+**Next.js**
+
+Used as the React framework because it provides a structured application architecture and is suitable for building scalable frontend applications.
+
+**TypeScript**
+
+Used for type safety and to make project models, form values, component props, and state easier to maintain.
+
+**Tailwind CSS**
+
+Used for styling because it allows consistent, responsive UI development directly within the component structure.
+
+**shadcn/ui**
+
+Used for reusable UI components such as dialogs, buttons, cards, inputs, selects, and toast notifications.
+
+**React Hook Form + Zod**
+
+Used for form state management and validation. This keeps validation rules centralized and makes the project form easier to maintain.
+
+---
+
+# Features Implemented
+
+## 1. Project List
+
+All projects are displayed in an organized table/list layout.
+
+Each project displays:
 
 - Client Name
 - Project Name
@@ -45,90 +79,145 @@ Displays project information including:
 - Priority
 - Due Date
 
-Projects are presented in a responsive table/list layout.
-
-#### Create Project
-
-Users can create a new project through a modal form.
-
-After successfully creating a project:
-
-- The project is immediately added to the project list
-- The project appears at the top when using the default "Recently Added" sorting
-- A success toast notification is displayed
-- The dialog closes automatically
-
-#### Edit Project
-
-Users can edit existing projects.
-
-After updating a project:
-
-- The project list updates immediately
-- A success toast notification confirms the update
-
-#### Delete Project
-
-Users can delete projects through a confirmation dialog.
-
-After deletion:
-
-- The project is removed immediately from the list
-- Dashboard statistics are updated
-- A success toast notification is displayed
-
-#### Form Validation
-
-The project form validates:
-
-- Client Name is required
-- Project Name is required
-- Status is required
-- Status must be a valid project status
-- Priority is required
-- Priority must be a valid project priority
-- Due Date cannot be earlier than Start Date
-
-Validation errors are displayed directly within the form.
-
-#### UI States
-
-The application handles:
-
-- Loading state
-- Empty state
-- No search/filter results state
-- Error state
-- Success notifications
-- Delete confirmation
+The project list is responsive and provides a mobile-friendly presentation.
 
 ---
 
-## Bonus Features
+## 2. Create Project
 
-The following optional features were also implemented:
+Users can create a new project using the **New Project** button.
 
-### Search
+The form includes:
 
-Projects can be searched by:
+- Client Name
+- Project Name
+- Description
+- Status
+- Priority
+- Start Date
+- Due Date
+
+After successfully creating a project:
+
+- The project is immediately added to the project list.
+- The new project appears at the top of the list when using the default **Recently Added** sorting.
+- The dialog closes automatically.
+- A success toast notification is displayed.
+
+Example:
+
+> Project created  
+> Website Redesign has been added successfully.
+
+---
+
+## 3. Edit Project
+
+Existing projects can be edited.
+
+The current project information is loaded into the form and can be updated.
+
+After successfully editing a project:
+
+- The project list updates immediately.
+- The dialog closes.
+- A success toast notification is displayed.
+
+---
+
+## 4. Delete Project
+
+Users can delete projects from the project list.
+
+A confirmation dialog is displayed before deletion to prevent accidental removal.
+
+After deletion:
+
+- The project is removed immediately from the list.
+- Dashboard statistics are updated.
+- A success toast notification is displayed.
+
+---
+
+## 5. Form Validation
+
+Project forms include validation for the required fields.
+
+### Client Name
+
+Required.
+
+### Project Name
+
+Required.
+
+### Status
+
+Required and must contain a valid project status.
+
+Supported statuses include:
+
+- Pending
+- In Progress
+- On Hold
+- Completed
+
+### Priority
+
+Required and must contain a valid priority.
+
+Supported priorities include:
+
+- Low
+- Medium
+- High
+- Urgent
+
+### Start Date
+
+Required.
+
+### Due Date
+
+Required.
+
+The due date cannot be earlier than the start date.
+
+Validation errors are displayed directly in the form to help the user correct invalid input.
+
+---
+
+# Bonus Features Implemented
+
+The following optional features from the assessment were implemented.
+
+## Search
+
+Users can search projects by:
 
 - Project Name
 - Client Name
 - Description
 
-### Status Filtering
+Search results update immediately as the user types.
 
-Projects can be filtered by:
+---
+
+## Status Filtering
+
+Projects can be filtered by status:
 
 - All
 - Pending
 - In Progress
-- Completed
 - On Hold
+- Completed
 
-### Priority Filtering
+---
 
-Projects can be filtered by:
+## Priority Filtering
+
+Projects can be filtered by priority:
 
 - All
 - Low
@@ -136,76 +225,113 @@ Projects can be filtered by:
 - High
 - Urgent
 
-### Sorting
+---
 
-Projects can be sorted by:
+## Sorting
+
+Projects can be sorted using:
 
 - Recently Added
-- Due Date — Earliest
-- Due Date — Latest
-- Project Name — A-Z
-- Project Name — Z-A
+- Due Date — Earliest First
+- Due Date — Latest First
+- Project Name — A to Z
+- Project Name — Z to A
 
-The default sorting is **Recently Added**, so newly created projects appear at the top of the list.
+The default sorting option is **Recently Added**.
 
-### Dashboard Summary
+This ensures that newly created projects appear at the top of the list.
 
-The dashboard displays project counts for:
+---
+
+## Dashboard Summary
+
+The dashboard provides project statistics for:
 
 - Total Projects
 - Pending
 - In Progress
 - Completed
 
-### Responsive Design
+The statistics update automatically when projects are created, edited, or deleted.
 
-The interface is designed to work across:
+---
+
+## Responsive Design
+
+The application is designed to work across different screen sizes.
+
+The interface adapts for:
 
 - Desktop
 - Tablet
 - Mobile
 
-### Toast Notifications
-
-Success and error feedback is provided through the Shadcn toast system.
-
-Examples include:
-
-- Project created successfully
-- Project updated successfully
-- Project deleted successfully
-- Unable to save project
-- Unable to delete project
+The project management interface uses responsive layouts to keep the application usable on smaller screens.
 
 ---
 
-## Tech Stack
+## Toast Notifications
 
-### Core
+The application uses the shadcn toast component for user feedback.
 
-- [Next.js](https://nextjs.org/)
-- React
-- TypeScript
+Success notifications are displayed when:
 
-### UI
+- A project is created
+- A project is updated
+- A project is deleted
 
-- [shadcn/ui](https://ui.shadcn.com/)
-- Tailwind CSS
-- Lucide React
-
-### Forms & Validation
-
-- React Hook Form
-- Zod
-
-### Data
-
-- Local JSON data source
-- React state management
+Error notifications are displayed when an operation fails.
 
 ---
 
-## Project Structure
+# UI States
+
+The application handles the following states.
+
+## Loading State
+
+A skeleton loading state is included for the project list.
+
+This provides a visual placeholder while project data is being loaded.
+
+---
+
+## Empty State
+
+When there are no projects, the application displays an empty state with an option to create a project.
+
+Example:
+
+> No projects yet  
+> Create your first project to get started.
+
+---
+
+## No Results State
+
+If projects exist but no projects match the current search or filters, the application displays a separate no-results state.
+
+Example:
+
+> No projects found  
+> Try changing your search or filters.
+
+---
+
+## Error State
+
+Errors are handled using both:
+
+- An inline error message
+- Toast notification feedback
+
+This gives users immediate feedback while keeping the application state understandable.
+
+---
+
+# Project Structure
+
+The project is organized by responsibility to keep the code maintainable.
 
 ```text
 task-management/
@@ -249,6 +375,9 @@ task-management/
 ├── public/
 │
 ├── components.json
+├── eslint.config.mjs
+├── next.config.ts
 ├── package.json
+├── package-lock.json
 ├── tsconfig.json
 └── README.md
