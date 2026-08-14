@@ -1,3 +1,25 @@
+# Getting Started
+
+Follow the instructions below to set up and run the project locally.
+
+## Prerequisites
+
+Before running the application, make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/) version 18.18 or later
+- npm
+- Git
+
+You can check your installed versions with:
+
+```bash
+node -v
+npm -v
+git --version
+```
+
+---
+
 # Client Project Tracker
 
 A responsive frontend application for managing client projects for a digital agency.
@@ -28,6 +50,7 @@ Users can:
 No backend implementation is required for this assessment. Project data is initialized from the provided `test_data.json` file and managed in frontend state.
 
 ---
+
 
 ## Tech Stack
 
