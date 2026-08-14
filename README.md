@@ -4,6 +4,23 @@ A responsive frontend application for managing client projects for a digital age
 
 This project was developed as part of a **Frontend Developer Technical Assessment**. The application allows users to create, view, update, and delete client projects while providing search, filtering, sorting, validation, dashboard statistics, and responsive layouts.
 
+# Getting Started
+
+Follow the steps below to run the project locally.
+
+## Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js 18.18 or later
+- npm
+
+You can verify your installations with:
+
+```bash
+node --version
+npm --version
+
 ---
 
 ## Overview
