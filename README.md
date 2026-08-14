@@ -827,20 +827,6 @@ If additional development time were available, possible improvements would inclu
 
 ---
 
-# Submission
-
-The completed project should be submitted through the official assessment application form.
-
-The submission requires:
-
-- Public GitHub repository link
-- Setup and run instructions
-- Short technical reflection answers
-
-Make sure the GitHub repository is publicly accessible before submitting.
-
----
-
 # License
 
 This project was created as part of a **Frontend Developer Technical Assessment**.
